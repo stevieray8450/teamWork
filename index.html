@@ -15,16 +15,16 @@
 <!-- Main page; index.html-->
 <div id="main" data-role="page" data-theme="a">
   <div data-role="header" data-theme="a">
-  	<div class="logo"><a href="index.html" target="_self"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
+  	<div class="logo"><a href="index.html" target="_self" data-transition="fade"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
   </div>
   <div data-role="content">teamWork is an app meant to serve the purpose of work team
   scheduling, time recording and work time management, as well as pay information</div>
   <div data-role="content">
   	<ul data-role="listview" data-theme="a">
-    	<li><a href="#recordTime">Record Time</a></li>
-        <li><a href="#PTO">Paid Time Off Balance</a></li>
-        <li><a href="#scheduling">Department Schedule</a></li>
-        <li><a href="#paystub">Pay Stub and Compensation Records</a></li>
+    	<li><a href="#recordTime" data-transition="pop">Record Time</a></li>
+        <li><a href="#PTO" data-transition="pop">Paid Time Off Balance</a></li>
+        <li><a href="#scheduling" data-transition="pop">Department Schedule</a></li>
+        <li><a href="#paystub" data-transition="pop">Pay Stub and Compensation Records</a></li>
     </ul>
   </div>	
   <div data-role="footer">
@@ -32,35 +32,52 @@
   </div>
 </div>
 <!-- Record Time page-->
-<div data-role="page" id="recordTime" data-theme="a" data-transition="slideup">
+<div data-role="page" id="recordTime" data-theme="a">
   <div data-role="header" data-theme="a">      
-    <div class="logo"><a href="index.html" target="_self"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
+    <div class="logo"><a href="index.html" target="_self" data-transition="fade"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
     Record Your Time
       	<div data-role="navbar" data-theme="a">
     		<ul>
                 <li><a href="#recordTime" class="ui-btn-active">Record Time</a></li>
-                <li><a href="#PTO">Paid Time Off Balance</a></li>
-                <li><a href="#scheduling">Department Schedule</a></li>
-                <li><a href="#paystub">Pay Stub and Compensation Records</a></li>
+                <li><a href="#PTO" data-transition="pop">Paid Time Off Balance</a></li>
+                <li><a href="#scheduling" data-transition="pop">Department Schedule</a></li>
+                <li><a href="#paystub" data-transition="pop">Pay Stub and Compensation Records</a></li>
         	</ul>
     	</div>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain">
-            <label for="date">Enter Date:</label>
-            <input type="date" name="date" id="date" value=""  />
-        </div>
-        <div data-role="fieldcontain">
-        	<label for="time">Enter Shift Time Start:</label>
-        	<input type="time" name="timeStart" id="timeStart" value=""  />
-      	</div>
-      	<div data-role="fieldcontain">
-        	<label for="time">Enter Shift Time End:</label>
-        	<input type="time" name="timeEnd" id="timeEnd" value=""  />
-      	</div>
+    	<form id="recordTime" name="recordTime" action="myFile.php" method="get">
+            <div data-role="fieldcontain">
+                <label for="date">Enter Date:</label>
+                <input type="date" name="date" id="date" value=""  />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="timeStart">Enter Shift Time Start:</label>
+                <input type="time" name="timeStart" id="timeStart" value=""  />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="timeEnd">Enter Shift Time End:</label>
+                <input type="time" name="timeEnd" id="timeEnd" value=""  />
+            </div>
+            <div data-role="fieldcontain">
+              <label for="comments">Comments:</label>
+              <input type="text" name="comments" id="comments" value="Enter any comments regarding your shift here."  />
+            </div>
+            <div data-role="fieldcontain">
+              <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>If absent, enter reason:</legend>
+                <input type="radio" name="sick" id="sick" value="" />
+                <label for="sick">Sick</label>
+                <input type="radio" name="PTO" id="PTO" value="" />
+                <label for="PTO">Paid-Time Off/Personal</label>
+                <input type="radio" name="preVacay" id="preVacay" value="" />
+                <label for="preVacay">Pre-approved Vacation</label>
+              </fieldset>
+            </div>  
+          <input type="submit" value="Submit" data-icon="check" />
+        </form>
 	<!-- the button element below would ideally add a record in a database that would record the time as inputted by the user-->  
 	<!-- for now, the button only links back to the recordTime page-->
-		<a href="#recordTime" data-role="button">Submit</a>    
 	</div>
   <div data-role="footer">
     <h4>Boniface &copy;2016</h4>
@@ -68,29 +85,31 @@
 </div>
 
 <!-- PTO Hours Balance page-->
-<div data-role="page" id="PTO" data-theme="a" data-transition="slideup">
+<div data-role="page" id="PTO" data-theme="a">
   <div data-role="header" data-theme="a">
-      <div class="logo"><a href="index.html" target="_self"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
+      <div class="logo"><a href="index.html" target="_self" data-transition="fade"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
       PTO Hours Balance
       	<div data-role="navbar" data-theme="a">
     		<ul>
-                <li><a href="#recordTime">Record Time</a></li>
+                <li><a href="#recordTime" data-transition="pop">Record Time</a></li>
                 <li><a href="#PTO" class="ui-btn-active">Paid Time Off Balance</a></li>
-                <li><a href="#scheduling">Department Schedule</a></li>
-                <li><a href="#paystub">Pay Stub and Compensation Records</a></li>
+                <li><a href="#scheduling" data-transition="pop">Department Schedule</a></li>
+                <li><a href="#paystub" data-transition="pop">Pay Stub and Compensation Records</a></li>
         	</ul>
     	</div> 
   </div>
   <!-- Ideally, the "x" value below would be pulled from a database (i.e. a table containing employees' PTO time available
   could be leveraged using an SELECT command (SQL))-->
   <div data-role="content">You currently have x hours available<br />
-  To see project time off for a future date, select a date below:<hr>
-  <!-- Again, a database in conjuction with PHP could calculate the hours available now and what would be earned
-  by a future date inputted by the customer and display it after the date is entered-->
-        <div data-role="fieldcontain">
-            <label for="date">Enter Date:</label>
-            <input type="date" name="futurePTO" id="futurePTO" value=""  />
-        </div>  
+  To see a projection of time off for a future date, select a date below:
+  <hr>
+  	<form id="ptoBalance" name="ptoBalance" action="myPage.php" method="get">
+  	  <div data-role="fieldcontain">
+  	    <label for="ptoBalance">Select your date to see projected PTO balance:</label>
+  	    <input type="date" name="ptoBalance" id="ptoBalance" value=""  />
+      </div>
+  	  <input type="submit" value="Submit" data-icon="check" />
+    </form>
   </div>
   <div data-role="footer">
     <h4>Boniface &copy;2016</h4>
@@ -98,51 +117,68 @@
 </div>
 
 <!-- Department Schedule page-->
-<div data-role="page" id="scheduling" data-theme="a" data-transition="slideup">
+<div data-role="page" id="scheduling" data-theme="a">
   <div data-role="header" data-theme="a">
-      <div class="logo"><a href="index.html" target="_self"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
+      <div class="logo"><a href="index.html" target="_self" data-transition="fade"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
       Department Schedule
        	<div data-role="navbar" data-theme="a">
             <ul>
-                <li><a href="#recordTime">Record Time</a></li>
-                <li><a href="#PTO">Paid Time Off Balance</a></li>
+                <li><a href="#recordTime" data-transition="pop">Record Time</a></li>
+                <li><a href="#PTO" data-transition="pop">Paid Time Off Balance</a></li>
                 <li><a href="#scheduling" class="ui-btn-active">Department Schedule</a></li>
-                <li><a href="#paystub">Pay Stub and Compensation Records</a></li>
+                <li><a href="#paystub" data-transition="pop">Pay Stub and Compensation Records</a></li>
             </ul>
         </div>
   </div>
   <div data-role="content">Your team's schedule can be seen below:</div>
   <!-- Using a sort of imbedded calendar (ala Google Calendar, perhaps,) the work-team's departmental calendar would be displayed, 
   allowing team members and managers to see when people are out of the office (for example)-->
+  <form id="teamSchedule" name="teamSchedule" action="myFile.php" method="get">
+    <div data-role="fieldcontain">
+      <label for="teamSchedule" class="select">Select department:</label>
+      <select name="teamSchedule" id="teamSchedule">
+        <option value="facilities">Facilities</option>
+        <option value="sales">Sales</option>
+        <option value="hr">Human Resources</option>
+        <option value="techSupport">Technical Support</option>
+        <option value="supplyChain">Supply Chain</option>
+        <option value="marketing">Marketing</option>
+      </select>
+    </div>
+    <input type="submit" value="Submit" data-icon="check" />
+  </form>
   <div data-role="footer">
     <h4>Boniface &copy;2016</h4>
   </div>
 </div>
 
 <!-- Pay Stub and Compensation Records page-->
-<div data-role="page" id="paystub" data-theme="a" data-transition="slideup">
+<div data-role="page" id="paystub" data-theme="a">
   <div data-role="header" data-theme="a">
-      <div class="logo"><a href="index.html" target="_self"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
+      <div class="logo"><a href="index.html" target="_self" data-transition="fade"><img src="themes/images/logo.png" align="middle" alt="teamWork"/></a></div>
       Pay Stub and Compensation Records
        	<div data-role="navbar" data-theme="a">
             <ul>
-                <li><a href="#recordTime">Record Time</a></li>
-                <li><a href="#PTO">Paid Time Off Balance</a></li>
-                <li><a href="#scheduling">Department Schedule</a></li>
+                <li><a href="#recordTime" data-transition="pop">Record Time</a></li>
+                <li><a href="#PTO" data-transition="pop">Paid Time Off Balance</a></li>
+                <li><a href="#scheduling" data-transition="pop">Department Schedule</a></li>
                 <li><a href="#paystub" class="ui-btn-active">Pay Stub and Compensation Records</a></li>
             </ul>
         </div>
   </div>
   <div data-role="content">Select your pay stub:
-    <div data-role="fieldcontain">
-    <!-- Selecting an option below would provide the paystub in a .pdf format (or similar)-->
-      <label for="selectmenu" class="select">Pay periods:</label>
-      <select name="selectmenu" id="selectmenu">
-        <a href="#"><option value="option1">Fiscal Year X, Jan.01-14</option></a>
-        <a href="#"><option value="option2">Fiscal Year X, Jan.17-31</option></a>
-        <a href="#"><option value="option3">Fiscal Year X, Feb.3-17</option></a>
-      </select>
-    </div>
+      <form id="enterTime" name="enterTime" action="myFile.php" method="get">
+            <div data-role="fieldcontain">
+            <!-- Selecting an option below would provide the paystub in a .pdf format (or similar)-->
+              <label for="selectmenu" class="select">Pay periods:</label>
+              <select name="selectmenu" id="selectmenu">
+                <option value="week1">Fiscal Year X, Jan.01-14</option></a>
+                <option value="week2">Fiscal Year X, Jan.17-31</option></a>
+                <option value="week3">Fiscal Year X, Feb.3-17</option></a>
+              </select>
+            </div>
+        <input type="submit" value="Submit" />   
+      </form>
   </div>
   <div data-role="footer">
     <h4>Boniface &copy;2016</h4>
